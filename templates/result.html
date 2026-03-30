@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.card {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>🧾 Diagnosis Result</h2>
+
+<p>{{ result }}</p>
+<p><b>🧠 Explanation:</b> {{ reason }}</p>
+
+<canvas id="chart" width="200" height="200"></canvas>
+
+<br><br>
+
+{% if level == "high" %}
+<h3 style="color:red;">🚨 Emergency</h3>
+{% elif level == "medium" %}
+<h3 style="color:orange;">⚠️ Moderate Risk</h3>
+{% else %}
+<h3 style="color:green;">✅ Low Risk</h3>
+{% endif %}
+
+<br>
+
+<a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
+<button style="background:red;color:white;">🚑 Nearby Hospitals</button>
+</a>
+
+<br><br>
+<a href="/dashboard"><button>⬅ Back</button></a>
+
+</div>
+
+<script>
+let level = "{{ level }}";
+
+let data = 30;
+
+if(level === "high") data = 90;
+else if(level === "medium") data = 60;
+else data = 30;
+
+new Chart(document.getElementById("chart"), {
+    type: 'doughnut',
+    data: {
+        labels: ["Risk", "Safe"],
+        datasets: [{
+            data: [data, 100-data]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>

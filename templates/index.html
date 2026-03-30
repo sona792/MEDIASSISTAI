@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diagnosis</title>
+
+<style>
+body {
+    font-family:'Segoe UI';
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card {
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+input {
+    padding:10px;
+    width:100%;
+    margin:10px 0;
+}
+
+button {
+    padding:10px;
+    width:100%;
+    background:#667eea;
+    color:white;
+    border:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Enter Symptoms</h2>
+
+<form action="/predict" method="post">
+<input name="symptoms" placeholder="fever, cough..." required>
+<button>🔍 Diagnose</button>
+</form>
+
+<br>
+
+<button onclick="chat()">💬 Ask AI</button>
+
+</div>
+
+<script>
+function chat(){
+let q = prompt("Ask health question:");
+if(!q) return;
+
+q=q.toLowerCase();
+
+if(q.includes("fever")) alert("Stay hydrated.");
+else if(q.includes("cold")) alert("Take steam.");
+else alert("Consult doctor.");
+}
+</script>
+
+</body>
+</html>

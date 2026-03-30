@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+</head>
+
+<body>
+
+<h2>📜 Patient History</h2>
+
+<ul>
+    {% for item in history %}
+        <li>{{ item[0] }}</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+</body>
+</html>
