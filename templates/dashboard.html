@@ -7,7 +7,28 @@
 body {
     margin:0;
     font-family:'Segoe UI';
-    background: linear-gradient(135deg,#1f4037,#99f2c8);
+}
+
+/* BACKGROUND IMAGE (GUARANTEED METHOD) */
+.bg {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* DARK OVERLAY */
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index:-1;
 }
 
 /* NAVBAR */
@@ -58,7 +79,7 @@ body {
     padding:25px;
     border-radius:15px;
     text-align:center;
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* BUTTON */
@@ -68,18 +89,16 @@ button {
     margin-top:10px;
     border:none;
     border-radius:8px;
-    background:url('https://images.unsplash.com/photo-1588776814546-ec7e2c3c3c9b') no-repeat center center/cover;
+    background: linear-gradient(135deg,#667eea,#764ba2);
     color:white;
     cursor:pointer;
     font-weight:bold;
-    transition:0.3s;
 }
 
 button:hover {
     transform: scale(1.05);
 }
 
-/* LIST */
 ul {
     text-align:left;
     padding-left:20px;
@@ -89,6 +108,11 @@ ul {
 </head>
 
 <body>
+
+<!-- BACKGROUND IMAGE -->
+<img class="bg" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
+
+<div class="overlay"></div>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -103,49 +127,45 @@ ul {
 
 <!-- HERO -->
 <div class="hero">
-    <h1>AI Healthcare Assistant</h1>
-    <p>Smart symptom analysis powered by AI</p>
+    <h1>Smart Healthcare AI System</h1>
+    <p>AI-powered diagnosis for faster and smarter healthcare decisions</p>
 </div>
 
 <!-- CARDS -->
 <div class="container">
 
-    <!-- ACTION CARD -->
     <div class="card">
         <h3>🚀 Get Started</h3>
-        <p>Start your diagnosis now</p>
+        <p>Begin your diagnosis instantly</p>
 
         <a href="/diagnosis"><button>🧠 Diagnose</button></a>
         <a href="/history"><button>📜 History</button></a>
     </div>
 
-    <!-- HOW IT WORKS -->
     <div class="card">
         <h3>🛠 How It Works</h3>
         <ul>
-            <li>Enter symptoms</li>
-            <li>AI analyzes data</li>
-            <li>Get instant result</li>
+            <li>Enter your symptoms</li>
+            <li>AI analyzes your condition</li>
+            <li>Get instant diagnosis</li>
             <li>Check risk level</li>
             <li>Find nearby hospitals</li>
         </ul>
     </div>
 
-    <!-- FEATURES -->
     <div class="card">
         <h3>✨ Features</h3>
         <ul>
             <li>AI-based diagnosis</li>
             <li>Instant results</li>
             <li>Risk level detection</li>
-            <li>History tracking</li>
-            <li>User-friendly UI</li>
+            <li>Patient history tracking</li>
+            <li>Smart healthcare support</li>
         </ul>
     </div>
 
 </div>
 
-<!-- FOOTER -->
 <p style="text-align:center;color:white;margin-top:20px;">
 ⚠️ AI-based suggestion only. Consult a doctor.
 </p>
