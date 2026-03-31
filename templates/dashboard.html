@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
+<title>MediAssist AI</title>
 
 <style>
 body {
     margin:0;
     font-family:'Segoe UI';
-    background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118') no-repeat center center/cover;
+    background: linear-gradient(135deg,#1f4037,#99f2c8);
+}
+
+/* NAVBAR */
+.navbar {
+    background:#0d6efd;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     color:white;
 }
 
-/* HEADER */
-.header {
-    background: rgba(0,0,0,0.7);
+.navbar a {
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero {
+    text-align:center;
+    color:white;
+    padding:40px 20px;
+}
+
+.hero h1 {
+    font-size:36px;
+}
+
+.hero p {
+    font-size:18px;
+}
+
+/* CARD GRID */
+.container {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
     padding:20px;
-    text-align:center;
 }
 
-/* MAIN CARD */
+/* CARD */
 .card {
-    background: rgba(255,255,255,0.95);
-    color:black;
-    padding:30px;
-    margin:40px auto;
-    width:320px;
+    background:white;
+    width:280px;
+    padding:25px;
     border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
     text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* BUTTONS */
+/* BUTTON */
 button {
     width:100%;
     padding:12px;
-    margin:10px 0;
+    margin-top:10px;
     border:none;
     border-radius:8px;
     background: linear-gradient(135deg,#667eea,#764ba2);
@@ -48,64 +79,75 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* SECTION TEXT */
-.section {
+/* LIST */
+ul {
     text-align:left;
-    margin-top:20px;
+    padding-left:20px;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-    <h1>🏥 MediAssist AI</h1>
-    <p>AI-Powered Healthcare Diagnosis System</p>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>🏥 MediAssist AI</h2>
+    <div>
+        <a href="/dashboard">Home</a>
+        <a href="/diagnosis">Diagnosis</a>
+        <a href="/history">History</a>
+        <a href="/">Logout</a>
+    </div>
 </div>
 
-<!-- CARD -->
-<div class="card">
+<!-- HERO -->
+<div class="hero">
+    <h1>AI Healthcare Assistant</h1>
+    <p>Smart symptom analysis powered by AI</p>
+</div>
 
-    <h2>📊 Dashboard</h2>
+<!-- CARDS -->
+<div class="container">
 
-    <a href="/diagnosis"><button>🧠 Start Diagnosis</button></a>
-    <a href="/history"><button>📜 View History</button></a>
-    <a href="/"><button style="background:red;">🚪 Logout</button></a>
+    <!-- ACTION CARD -->
+    <div class="card">
+        <h3>🚀 Get Started</h3>
+        <p>Start your diagnosis now</p>
 
-    <hr>
+        <a href="/diagnosis"><button>🧠 Diagnose</button></a>
+        <a href="/history"><button>📜 History</button></a>
+    </div>
 
-    <!-- HOW TO USE -->
-    <div class="section">
+    <!-- HOW IT WORKS -->
+    <div class="card">
         <h3>🛠 How It Works</h3>
         <ul>
-            <li>Enter your symptoms (fever, cough, etc.)</li>
-            <li>AI analyzes your condition</li>
-            <li>Get instant diagnosis result</li>
-            <li>Check risk level (Low / Medium / High)</li>
-            <li>Find nearby hospitals if needed</li>
+            <li>Enter symptoms</li>
+            <li>AI analyzes data</li>
+            <li>Get instant result</li>
+            <li>Check risk level</li>
+            <li>Find nearby hospitals</li>
         </ul>
     </div>
 
-    <hr>
-
     <!-- FEATURES -->
-    <div class="section">
+    <div class="card">
         <h3>✨ Features</h3>
         <ul>
-            <li>✔ AI-based symptom analysis</li>
-            <li>✔ Instant diagnosis suggestions</li>
-            <li>✔ Risk level detection</li>
-            <li>✔ Patient history tracking</li>
-            <li>✔ Simple and fast interface</li>
+            <li>AI-based diagnosis</li>
+            <li>Instant results</li>
+            <li>Risk level detection</li>
+            <li>History tracking</li>
+            <li>User-friendly UI</li>
         </ul>
     </div>
 
 </div>
 
 <!-- FOOTER -->
-<p style="text-align:center;font-size:12px;color:white;margin-top:20px;">
-⚠️ AI-based suggestion only. Consult a doctor for accurate diagnosis.
+<p style="text-align:center;color:white;margin-top:20px;">
+⚠️ AI-based suggestion only. Consult a doctor.
 </p>
 
 </body>
