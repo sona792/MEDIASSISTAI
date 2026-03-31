@@ -4,170 +4,165 @@
 <title>MediAssist AI</title>
 
 <style>
-body {
-    margin:0;
-    font-family:'Segoe UI';
+
+body{
+margin:0;
+font-family:Segoe UI;
+color:white;
 }
 
-/* BACKGROUND IMAGE (GUARANTEED METHOD) */
-.bg {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
+/* background */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-/* DARK OVERLAY */
-.overlay {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.6);
-    z-index:-1;
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
 }
 
-/* NAVBAR */
-.navbar {
-    background:#0d6efd;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    color:white;
+/* navbar */
+
+.navbar{
+background:#0d6efd;
+padding:15px;
+display:flex;
+justify-content:space-between;
 }
 
-.navbar a {
-    color:white;
-    text-decoration:none;
-    margin:0 10px;
-    font-weight:bold;
+.navbar a{
+color:white;
+text-decoration:none;
+margin:10px;
+font-weight:bold;
 }
 
-/* HERO */
-.hero {
-    text-align:center;
-    color:white;
-    padding:40px 20px;
+/* hero */
+
+.hero{
+text-align:center;
+padding:40px;
 }
 
-.hero h1 {
-    font-size:36px;
+/* cards */
+
+.container{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+padding:20px;
 }
 
-.hero p {
-    font-size:18px;
+.card{
+background:white;
+color:black;
+width:280px;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* CARD GRID */
-.container {
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    padding:20px;
+button{
+padding:10px;
+width:100%;
+border:none;
+border-radius:8px;
+background:#0d6efd;
+color:white;
+margin-top:10px;
+cursor:pointer;
 }
 
-/* CARD */
-.card {
-    background:white;
-    width:280px;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 10px 20px rgba(0,0,0,0.3);
-}
-
-/* BUTTON */
-button {
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:none;
-    border-radius:8px;
-    background: linear-gradient(135deg,#667eea,#764ba2);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-ul {
-    text-align:left;
-    padding-left:20px;
-}
 </style>
-
 </head>
 
 <body>
 
-<!-- BACKGROUND IMAGE -->
-<img class="bg" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
-
+<img class="bg" src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b">
 <div class="overlay"></div>
 
-<!-- NAVBAR -->
 <div class="navbar">
-    <h2>🏥 MediAssist AI</h2>
-    <div>
-        <a href="/dashboard">Home</a>
-        <a href="/diagnosis">Diagnosis</a>
-        <a href="/history">History</a>
-        <a href="/">Logout</a>
-    </div>
+
+<h2>🏥 MediAssist AI</h2>
+
+<div>
+<a href="/dashboard">Home</a>
+<a href="/diagnosis">Diagnosis</a>
+<a href="/history">History</a>
+<a href="/">Logout</a>
 </div>
 
-<!-- HERO -->
+</div>
+
 <div class="hero">
-    <h1>Smart Healthcare AI System</h1>
-    <p>AI-powered diagnosis for faster and smarter healthcare decisions</p>
+
+<h1>AI Powered Smart Healthcare System</h1>
+
+<p>
+MediAssist AI is a smart healthcare assistant that helps users analyze symptoms 
+and get possible disease predictions instantly using Artificial Intelligence.
+</p>
+
 </div>
 
-<!-- CARDS -->
 <div class="container">
 
-    <div class="card">
-        <h3>🚀 Get Started</h3>
-        <p>Begin your diagnosis instantly</p>
+<div class="card">
 
-        <a href="/diagnosis"><button>🧠 Diagnose</button></a>
-        <a href="/history"><button>📜 History</button></a>
-    </div>
+<h3>🧠 Start Diagnosis</h3>
 
-    <div class="card">
-        <h3>🛠 How It Works</h3>
-        <ul>
-            <li>Enter your symptoms</li>
-            <li>AI analyzes your condition</li>
-            <li>Get instant diagnosis</li>
-            <li>Check risk level</li>
-            <li>Find nearby hospitals</li>
-        </ul>
-    </div>
+<p>Enter symptoms and let AI analyze your health condition.</p>
 
-    <div class="card">
-        <h3>✨ Features</h3>
-        <ul>
-            <li>AI-based diagnosis</li>
-            <li>Instant results</li>
-            <li>Risk level detection</li>
-            <li>Patient history tracking</li>
-            <li>Smart healthcare support</li>
-        </ul>
-    </div>
+<a href="/diagnosis"><button>Start</button></a>
 
 </div>
 
-<p style="text-align:center;color:white;margin-top:20px;">
-⚠️ AI-based suggestion only. Consult a doctor.
+
+<div class="card">
+
+<h3>📘 How To Use</h3>
+
+<ul style="text-align:left">
+
+<li>Enter your symptoms</li>
+<li>AI analyzes data</li>
+<li>Get possible disease prediction</li>
+<li>Check precautions</li>
+
+</ul>
+
+</div>
+
+
+<div class="card">
+
+<h3>⚕ Precautions</h3>
+
+<ul style="text-align:left">
+
+<li>Always consult a doctor</li>
+<li>Use AI prediction as guidance</li>
+<li>Do not self-medicate</li>
+<li>Take medical advice if symptoms persist</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<p style="text-align:center">
+⚠ AI generated suggestions only. Not a replacement for professional medical advice.
 </p>
 
 </body>

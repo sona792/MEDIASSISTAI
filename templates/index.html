@@ -4,87 +4,79 @@
 <title>Diagnosis</title>
 
 <style>
-body {
-    margin:0;
-    font-family:'Segoe UI';
-    background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef') no-repeat center center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+
+body{
+margin:0;
+font-family:Segoe UI;
+color:white;
 }
 
-.card {
-    background: rgba(255,255,255,0.95);
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-    width:300px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-input {
-    padding:10px;
-    width:100%;
-    margin:10px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
 }
 
-button {
-    padding:10px;
-    width:100%;
-    background: linear-gradient(135deg,#667eea,#764ba2);
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+.box{
+background:white;
+color:black;
+width:400px;
+margin:100px auto;
+padding:30px;
+border-radius:15px;
+text-align:center;
 }
 
-button:hover {
-    transform: scale(1.05);
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
 }
+
+button{
+padding:12px;
+width:100%;
+border:none;
+background:#0d6efd;
+color:white;
+border-radius:8px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<img class="bg" src="https://images.unsplash.com/photo-1581056771107-24ca5f033842">
+<div class="overlay"></div>
 
-<h2>🧠 Enter Symptoms</h2>
+<div class="box">
 
-<form action="/predict" method="post" onsubmit="showLoading()">
-<input name="symptoms" placeholder="fever, cough..." required>
-<button>🔍 Diagnose</button>
+<h2>Enter Symptoms</h2>
+
+<form action="/predict" method="post">
+
+<input name="symptom1" placeholder="Symptom 1">
+<input name="symptom2" placeholder="Symptom 2">
+<input name="symptom3" placeholder="Symptom 3">
+
+<button>Predict Disease</button>
+
 </form>
 
-<p id="loading" style="display:none;color:gray;">🔄 Analyzing symptoms...</p>
-
-<br>
-
-<button onclick="chat()">💬 Ask AI</button>
-
-<br><br>
-<a href="/dashboard">⬅ Back</a>
-
 </div>
-
-<script>
-function showLoading() {
-    document.getElementById("loading").style.display = "block";
-}
-
-function chat(){
-let q = prompt("Ask health question:");
-if(!q) return;
-
-q=q.toLowerCase();
-
-if(q.includes("fever")) alert("Stay hydrated and rest.");
-else if(q.includes("cold")) alert("Take steam and warm fluids.");
-else alert("Consult a doctor.");
-}
-</script>
 
 </body>
 </html>

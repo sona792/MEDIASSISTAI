@@ -3,86 +3,70 @@
 <head>
 <title>Result</title>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <style>
-body {
-    margin:0;
-    font-family:'Segoe UI';
-    background: url('https://images.unsplash.com/photo-1588776814546-ec7e2c3c3c9b') no-repeat center center/cover;
-    text-align:center;
-    padding:40px;
+
+body{
+margin:0;
+font-family:Segoe UI;
+color:white;
 }
 
-.card {
-    background: rgba(255,255,255,0.95);
-    padding:30px;
-    border-radius:15px;
-    width:400px;
-    margin:auto;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-button {
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
 }
+
+.box{
+background:white;
+color:black;
+width:400px;
+margin:100px auto;
+padding:30px;
+border-radius:15px;
+text-align:center;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<img class="bg" src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8">
+<div class="overlay"></div>
 
-<h2>🧾 Diagnosis Result</h2>
+<div class="box">
 
-<p><b>{{ result }}</b></p>
-<p>{{ reason }}</p>
+<h2>Diagnosis Result</h2>
 
-<canvas id="chart" width="200" height="200"></canvas>
+<h3>{{prediction}}</h3>
 
-<br><br>
+<p>
 
-{% if level == "high" %}
-<h3 style="color:red;">🚨 Emergency</h3>
-{% elif level == "medium" %}
-<h3 style="color:orange;">⚠️ Moderate Risk</h3>
-{% else %}
-<h3 style="color:green;">✅ Low Risk</h3>
-{% endif %}
+Based on the symptoms entered, the AI predicts the possible disease above.
+This prediction is generated using trained healthcare datasets.
 
-<br>
+</p>
 
-<a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
-<button style="background:red;color:white;">🚑 Nearby Hospitals</button>
-</a>
+<p>
 
-<br><br>
-<a href="/dashboard"><button>⬅ Back</button></a>
+Precaution: Please consult a certified doctor for accurate medical diagnosis.
+
+</p>
+
+<a href="/dashboard">Go Back</a>
 
 </div>
-
-<script>
-let level = "{{ level }}";
-
-let data = 30;
-
-if(level === "high") data = 90;
-else if(level === "medium") data = 60;
-else data = 30;
-
-new Chart(document.getElementById("chart"), {
-    type: 'doughnut',
-    data: {
-        labels: ["Risk", "Safe"],
-        datasets: [{
-            data: [data, 100-data]
-        }]
-    }
-});
-</script>
 
 </body>
 </html>
