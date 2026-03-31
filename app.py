@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import random
 import sqlite3
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # 🗄️ DATABASE INIT
 def init_db():
@@ -131,6 +131,6 @@ def show_history():
 
 
 # 🚀 RUN
-if _name_ == '_main_':
+if __name__ == '__main__':
     init_db()   # 🔥 VERY IMPORTANT
     app.run(host='0.0.0.0', port=10000)
