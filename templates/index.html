@@ -5,122 +5,86 @@
 
 <style>
 body {
-    font-family: 'Segoe UI';
-    margin: 0;
-    background: linear-gradient(135deg,#667eea,#764ba2);
-}
-
-/* NAVBAR */
-.navbar {
-    background: #333;
-    padding: 15px;
-    text-align: center;
-}
-
-.navbar a {
-    color: white;
-    margin: 15px;
-    text-decoration: none;
-}
-
-/* HEADER */
-.header {
-    text-align: center;
-    color: white;
-    margin-top: 20px;
-}
-
-/* CARD */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
+    margin:0;
+    font-family:'Segoe UI';
+    background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef') no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 .card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    width: 300px;
+    background: rgba(255,255,255,0.95);
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    width:300px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
 }
 
 input {
-    padding: 10px;
-    width: 100%;
-    margin: 10px 0;
+    padding:10px;
+    width:100%;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 
 button {
-    padding: 10px;
-    width: 100%;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    padding:10px;
+    width:100%;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <a href="/dashboard">Home</a>
-    <a href="/diagnosis">Diagnosis</a>
-    <a href="/history">History</a>
-    <a href="/">🚪 Logout</a>
+<div class="card">
+
+<h2>🧠 Enter Symptoms</h2>
+
+<form action="/predict" method="post" onsubmit="showLoading()">
+<input name="symptoms" placeholder="fever, cough..." required>
+<button>🔍 Diagnose</button>
+</form>
+
+<p id="loading" style="display:none;color:gray;">🔄 Analyzing symptoms...</p>
+
+<br>
+
+<button onclick="chat()">💬 Ask AI</button>
+
+<br><br>
+<a href="/dashboard">⬅ Back</a>
+
 </div>
 
-<!-- HEADER -->
-<div class="header">
-    <h2>🏥 MediAssist AI</h2>
-    <p>Smart Healthcare Assistant</p>
-</div>
-
-<!-- MAIN CARD -->
-<div class="container">
-    <div class="card">
-
-        <h2>Enter Symptoms</h2>
-
-        <form action="/predict" method="post" onsubmit="showLoading()">
-            <input name="symptoms" placeholder="fever, cough..." required>
-            <button type="submit">🔍 Diagnose</button>
-        </form>
-
-        <p id="loading" style="display:none;color:gray;">🔄 Analyzing symptoms...</p>
-
-        <br>
-
-        <button onclick="chat()">💬 Ask AI</button>
-
-    </div>
-</div>
-
-<!-- SCRIPT -->
 <script>
 function showLoading() {
     document.getElementById("loading").style.display = "block";
 }
 
 function chat(){
-    let q = prompt("Ask health question:");
-    if(!q) return;
+let q = prompt("Ask health question:");
+if(!q) return;
 
-    q = q.toLowerCase();
+q=q.toLowerCase();
 
-    if(q.includes("fever")) alert("Stay hydrated and take rest.");
-    else if(q.includes("cold")) alert("Try steam inhalation.");
-    else alert("Consult a doctor.");
+if(q.includes("fever")) alert("Stay hydrated and rest.");
+else if(q.includes("cold")) alert("Take steam and warm fluids.");
+else alert("Consult a doctor.");
 }
 </script>
-
-<p style="font-size:12px;color:white;text-align:center;margin-top:20px;">
-⚠️ AI-based suggestion only. Consult a doctor for accurate diagnosis.
-</p>
 
 </body>
 </html>

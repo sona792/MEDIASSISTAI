@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>History</title>
+<title>History</title>
+
+<style>
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    color:white;
+    text-align:center;
+}
+
+/* BG */
+.bg {
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+.overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index:-1;
+}
+
+/* CARD */
+.card {
+    background:white;
+    color:black;
+    padding:30px;
+    margin:100px auto;
+    width:350px;
+    border-radius:15px;
+}
+</style>
 </head>
 
-<body style="font-family:Arial;background:#f5f6fa;margin:0;">
+<body>
 
-<!-- NAVBAR -->
-<div style="background:#333;padding:15px;text-align:center;">
-    <a href="/dashboard" style="color:white;margin:15px;">Home</a>
-    <a href="/diagnosis" style="color:white;margin:15px;">Diagnosis</a>
-    <a href="/history" style="color:white;margin:15px;">History</a>
-    <a href="/" style="color:white;margin:15px;">🚪 Logout</a>
-</div>
+<img class="bg" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56">
+<div class="overlay"></div>
 
-<!-- HEADER -->
-<h2 style="text-align:center;margin-top:20px;">🏥 MediAssist AI</h2>
-<p style="text-align:center;color:gray;">Smart Healthcare Assistant</p>
+<div class="card">
 
-<!-- HISTORY -->
-<h2 style="text-align:center;">📜 Patient History</h2>
+<h2>📜 Patient History</h2>
 
-<ul style="max-width:400px;margin:auto;background:white;padding:20px;border-radius:10px;list-style:none;">
-    {% for item in history %}
-        <li style="padding:10px;border-bottom:1px solid #ddd;">
-            {{ item[0] }}
-        </li>
-    {% endfor %}
+<ul>
+{% for item in history %}
+<li>{{ item[0] }}</li>
+{% endfor %}
 </ul>
 
 <br>
+<a href="/dashboard"><button>Back</button></a>
 
-<div style="text-align:center;">
-    <a href="/dashboard">⬅ Back to Dashboard</a>
 </div>
-
-<p style="font-size:12px;color:gray;text-align:center;margin-top:30px;">
-⚠️ AI-based suggestion only. Consult a doctor for accurate diagnosis.
-</p>
 
 </body>
 </html>
