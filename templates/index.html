@@ -4,79 +4,87 @@
 <title>Diagnosis</title>
 
 <style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-color:white;
+body {
+    margin:0;
+    font-family:'Segoe UI';
 }
 
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-2;
+/* BACKGROUND */
+.bg {
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
 }
 
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.65);
-z-index:-1;
+.overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index:-1;
 }
 
-.box{
-background:white;
-color:black;
-width:400px;
-margin:100px auto;
-padding:30px;
-border-radius:15px;
-text-align:center;
+/* CARD */
+.card {
+    background:white;
+    padding:30px;
+    margin:100px auto;
+    width:320px;
+    border-radius:15px;
+    text-align:center;
 }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #ccc;
+input, button {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
 }
 
-button{
-padding:12px;
-width:100%;
-border:none;
-background:#0d6efd;
-color:white;
-border-radius:8px;
+button {
+    background:#667eea;
+    color:white;
+    border:none;
 }
-
 </style>
 </head>
 
 <body>
 
-<img class="bg" src="https://images.unsplash.com/photo-1581056771107-24ca5f033842">
+<img class="bg" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54">
 <div class="overlay"></div>
 
-<div class="box">
+<div class="card">
 
-<h2>Enter Symptoms</h2>
+<h2>🧠 AI Symptom Analysis</h2>
+<p>Enter symptoms for smart healthcare diagnosis</p>
 
 <form action="/predict" method="post">
-
-<input name="symptom1" placeholder="Symptom 1">
-<input name="symptom2" placeholder="Symptom 2">
-<input name="symptom3" placeholder="Symptom 3">
-
-<button>Predict Disease</button>
-
+<input name="symptoms" placeholder="fever, cough..." required>
+<button>🔍 Analyze</button>
 </form>
 
+<br>
+
+<button onclick="chat()">💬 Ask AI</button>
+
 </div>
+
+<script>
+function chat() {
+let q = prompt("Ask MediAssist AI:");
+if(!q) return;
+
+q=q.toLowerCase();
+
+if(q.includes("fever")) alert("Stay hydrated & rest.");
+else if(q.includes("cold")) alert("Take steam inhalation.");
+else if(q.includes("chest")) alert("Consult doctor immediately.");
+else alert("Consult doctor for accurate advice.");
+}
+</script>
 
 </body>
 </html>

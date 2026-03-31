@@ -4,67 +4,70 @@
 <title>Result</title>
 
 <style>
-
-body{
-margin:0;
-font-family:Segoe UI;
-color:white;
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    color:white;
+    text-align:center;
 }
 
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-2;
+/* BG */
+.bg {
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
 }
 
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.65);
-z-index:-1;
+.overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    z-index:-1;
 }
 
-.box{
-background:white;
-color:black;
-width:400px;
-margin:100px auto;
-padding:30px;
-border-radius:15px;
-text-align:center;
+/* CARD */
+.card {
+    background:white;
+    color:black;
+    padding:30px;
+    margin:100px auto;
+    width:350px;
+    border-radius:15px;
 }
-
 </style>
 </head>
 
 <body>
 
-<img class="bg" src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8">
+<img class="bg" src="https://images.unsplash.com/photo-1581091012184-5c1d3c0c5b8c">
 <div class="overlay"></div>
 
-<div class="box">
+<div class="card">
 
-<h2>Diagnosis Result</h2>
+<h2>🧾 Diagnosis Result</h2>
 
-<h3>{{prediction}}</h3>
+<p>{{ result }}</p>
+<p><b>🧠 AI Insight:</b> {{ reason }}</p>
 
-<p>
+{% if level == "high" %}
+<h3 style="color:red;">🚨 High Risk</h3>
+{% elif level == "medium" %}
+<h3 style="color:orange;">⚠️ Moderate Risk</h3>
+{% else %}
+<h3 style="color:green;">✅ Low Risk</h3>
+{% endif %}
 
-Based on the symptoms entered, the AI predicts the possible disease above.
-This prediction is generated using trained healthcare datasets.
+<br>
 
-</p>
+<a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
+<button style="background:red;color:white;">Nearby Hospitals</button>
+</a>
 
-<p>
-
-Precaution: Please consult a certified doctor for accurate medical diagnosis.
-
-</p>
-
-<a href="/dashboard">Go Back</a>
+<br><br>
+<a href="/dashboard"><button>Back</button></a>
 
 </div>
 
