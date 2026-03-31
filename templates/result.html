@@ -7,27 +7,41 @@
 
 <style>
 body {
+    margin: 0;
     font-family: 'Segoe UI';
     background: linear-gradient(135deg,#667eea,#764ba2);
     color: white;
-    text-align: center;
-    padding: 40px;
 }
 
+/* NAVBAR */
+.navbar {
+    background: #333;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    margin: 15px;
+    text-decoration: none;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* CARD */
 .card {
     background: white;
     color: black;
     padding: 30px;
     border-radius: 15px;
     width: 400px;
-    margin: auto;
+    margin: 40px auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
+    text-align: center;
 }
 
 button {
@@ -40,51 +54,56 @@ button {
 </head>
 
 <body>
-    <body>
 
-<!-- ADD HERE -->
-<div style="background:#333;padding:10px;text-align:center;">
-    <a href="/dashboard" style="color:white;margin:10px;">Home</a>
-    <a href="/diagnosis" style="color:white;margin:10px;">Diagnosis</a>
-    <a href="/history" style="color:white;margin:10px;">History</a>
-    <a href="/" style="color:white;margin:10px;">🚪 Logout</a>
-    <h2 style="text-align:center;">🏥 MediAssist AI</h2>
-<p style="text-align:center;color:gray;">Smart Healthcare Assistant</p>
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="/dashboard">Home</a>
+    <a href="/diagnosis">Diagnosis</a>
+    <a href="/history">History</a>
+    <a href="/">🚪 Logout</a>
 </div>
 
-<h2>Enter Symptoms</h2>
-...
+<!-- HEADER -->
+<div class="header">
+    <h2>🏥 MediAssist AI</h2>
+    <p>Smart Healthcare Assistant</p>
+</div>
 
+<!-- RESULT CARD -->
 <div class="card">
 
-<h2>🧾 Diagnosis Result</h2>
+    <h2>🧾 Diagnosis Result</h2>
 
-<p>{{ result }}</p>
-<p><b>🧠 Explanation:</b> {{ reason }}</p>
+    <p>{{ result }}</p>
+    <p><b>🧠 Explanation:</b> {{ reason }}</p>
 
-<canvas id="chart" width="200" height="200"></canvas>
+    <canvas id="chart" width="200" height="200"></canvas>
 
-<br><br>
+    <br><br>
 
-{% if level == "high" %}
-<h3 style="color:red;">🚨 Emergency</h3>
-{% elif level == "medium" %}
-<h3 style="color:orange;">⚠️ Moderate Risk</h3>
-{% else %}
-<h3 style="color:green;">✅ Low Risk</h3>
-{% endif %}
+    {% if level == "high" %}
+        <h3 style="color:red;">🚨 Emergency</h3>
+    {% elif level == "medium" %}
+        <h3 style="color:orange;">⚠️ Moderate Risk</h3>
+    {% else %}
+        <h3 style="color:green;">✅ Low Risk</h3>
+    {% endif %}
 
-<br>
+    <br>
 
-<a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
-<button style="background:red;color:white;">🚑 Nearby Hospitals</button>
-</a>
+    <a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
+        <button style="background:red;color:white;">🚑 Nearby Hospitals</button>
+    </a>
 
-<br><br>
-<a href="/dashboard"><button>⬅ Back</button></a>
+    <br><br>
+
+    <a href="/dashboard">
+        <button>⬅ Back</button>
+    </a>
 
 </div>
 
+<!-- CHART SCRIPT -->
 <script>
 let level = "{{ level }}";
 
@@ -104,8 +123,10 @@ new Chart(document.getElementById("chart"), {
     }
 });
 </script>
-<p style="font-size:12px;color:gray;text-align:center;margin-top:30px;">
+
+<p style="font-size:12px;color:white;text-align:center;margin-top:20px;">
 ⚠️ AI-based suggestion only. Consult a doctor for accurate diagnosis.
 </p>
+
 </body>
 </html>
