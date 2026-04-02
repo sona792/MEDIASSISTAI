@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Result</title>
+<title>Diagnosis Result</title>
 
 <style>
 body {
     margin:0;
-    font-family:'Segoe UI';
+    font-family:'Segoe UI', sans-serif;
     color:white;
     text-align:center;
 }
@@ -36,7 +36,21 @@ body {
     margin:100px auto;
     width:350px;
     border-radius:15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
+/* Buttons */
+button {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:none;
+    font-size:16px;
+    cursor:pointer;
+}
+.hospital-btn { background:red; color:white; }
+.back-btn { background:#667eea; color:white; }
 </style>
 </head>
 
@@ -49,27 +63,33 @@ body {
 
 <h2>🧾 Diagnosis Result</h2>
 
-<p>{{ result }}</p>
+<p><b>Result:</b> {{ result }}</p>
 <p><b>🧠 AI Insight:</b> {{ reason }}</p>
 
 {% if level == "high" %}
 <h3 style="color:red;">🚨 High Risk</h3>
+<p>Severity Score: 90/100</p>
+<p>Recommended Action: Immediate medical attention required. Visit a hospital or consult a doctor urgently.</p>
+
 {% elif level == "medium" %}
 <h3 style="color:orange;">⚠️ Moderate Risk</h3>
+<p>Severity Score: 60/100</p>
+<p>Recommended Action: Monitor symptoms closely. If condition worsens, consult a doctor.</p>
+
 {% else %}
 <h3 style="color:green;">✅ Low Risk</h3>
+<p>Severity Score: 30/100</p>
+<p>Recommended Action: Maintain rest, hydration, and healthy lifestyle. Seek doctor if symptoms persist.</p>
+
 {% endif %}
 
 <br>
-
 <a href="https://www.google.com/maps/search/hospitals+near+me" target="_blank">
-<button style="background:red;color:white;">Nearby Hospitals</button>
+    <button class="hospital-btn">Nearby Hospitals</button>
 </a>
 
-<br><br>
-<a href="/dashboard"><button>Back</button></a>
+<a href="/dashboard"><button class="back-btn">Back</button></a>
 
 </div>
-
 </body>
 </html>

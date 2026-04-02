@@ -74,17 +74,32 @@ button {
 
 <script>
 function chat() {
-let q = prompt("Ask MediAssist AI:");
-if(!q) return;
+    let q = prompt("💬 Ask MediAssist AI (your health question):");
 
-q=q.toLowerCase();
+    if (!q) return;
 
-if(q.includes("fever")) alert("Stay hydrated & rest.");
-else if(q.includes("cold")) alert("Take steam inhalation.");
-else if(q.includes("chest")) alert("Consult doctor immediately.");
-else alert("Consult doctor for accurate advice.");
+    q = q.toLowerCase();
+
+    if (q.includes("fever")) {
+        alert("🤖 Fever is usually caused by infections such as viral flu or dengue. It is important to stay hydrated, take adequate rest, and monitor your temperature. If fever persists for more than 2 days or becomes very high, consult a doctor immediately.");
+    } 
+    else if (q.includes("cold") || q.includes("cough")) {
+        alert("🤖 Cold and cough are commonly caused by viral infections. You can take steam inhalation, drink warm fluids, and rest properly. If symptoms last for more than a few days or worsen, medical consultation is recommended.");
+    } 
+    else if (q.includes("headache")) {
+        alert("🤖 Headaches can occur due to stress, dehydration, or lack of sleep. Try resting in a calm environment, drinking enough water, and avoiding screen exposure. Persistent headaches should be checked by a doctor.");
+    } 
+    else if (q.includes("stomach") || q.includes("vomit") || q.includes("nausea")) {
+        alert("🤖 Stomach-related issues may be due to food poisoning or infection. Avoid oily or heavy foods, drink plenty of fluids, and maintain hygiene. If symptoms continue, seek medical advice.");
+    } 
+    else if (q.includes("chest") || q.includes("heart")) {
+        alert("🚨 Chest pain may indicate serious heart-related problems. It is important not to ignore such symptoms. Please seek immediate medical attention.");
+    } 
+    else if (q.includes("breath") || q.includes("breathing")) {
+        alert("🚨 Difficulty in breathing is a serious condition that may indicate respiratory issues like asthma or infection. Immediate medical attention is advised.");
+    } 
+    else {
+        alert("🤖 Based on your question, it is recommended to maintain a healthy lifestyle and consult a medical professional for accurate diagnosis and treatment.");
+    }
 }
 </script>
-
-</body>
-</html>

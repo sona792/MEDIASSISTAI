@@ -81,22 +81,33 @@ def predict_probability():
 def predict():
     symptoms = request.form['symptoms'].lower()
 
-    if "fever" in symptoms and ("joint" in symptoms or "body pain" in symptoms):
+    # 🔥 IMPROVED LOGIC
+    if any(word in symptoms for word in ["fever", "body pain", "joint pain"]):
         result = "🦟 Possible Dengue"
         level = "medium"
-        reason = "Fever with joint pain is commonly seen in dengue."
+        reason = "Fever with body or joint pain may indicate dengue."
 
-    elif ("cough" in symptoms or "cold" in symptoms) and "fever" in symptoms:
-        result = "🤧 Possible Flu"
+    elif any(word in symptoms for word in ["cough", "cold", "sneezing", "throat"]):
+        result = "🤧 Possible Flu / Cold"
         level = "low"
-        reason = "Fever with cough suggests viral flu."
+        reason = "Cough and cold symptoms indicate flu."
 
-    elif "chest" in symptoms or "heart" in symptoms:
+    elif any(word in symptoms for word in ["headache", "migraine"]):
+        result = "🤕 Headache / Migraine"
+        level = "low"
+        reason = "Headache may be due to stress or dehydration."
+
+    elif any(word in symptoms for word in ["stomach", "vomit", "nausea", "diarrhea"]):
+        result = "🤢 Stomach Infection"
+        level = "medium"
+        reason = "These symptoms may indicate digestive issues."
+
+    elif any(word in symptoms for word in ["chest", "heart", "pressure"]):
         result = "❤️ Possible Heart Issue"
         level = "high"
-        reason = "Chest pain may indicate heart-related problems."
+        reason = "Chest discomfort may indicate heart problems."
 
-    elif "breath" in symptoms:
+    elif any(word in symptoms for word in ["breath", "breathing", "asthma"]):
         result = "🫁 Breathing Problem"
         level = "high"
         reason = "Breathing difficulty can be serious."
@@ -104,10 +115,19 @@ def predict():
     else:
         result = "🩺 General Infection"
         level = "low"
-        reason = "Symptoms are not specific to a major condition."
+        reason = "Symptoms are not specific."
 
     prob = predict_probability()
     final_result = f"{result} ({prob}%)"
+
+    # SAVE TO DATABASE
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO history (result) VALUES (?)", (final_result,))
+    conn.commit()
+    conn.close()
+
+    return render_template('result.html', result=final_result, level=level, reason=reason)
 
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
